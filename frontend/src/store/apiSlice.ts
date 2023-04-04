@@ -1,6 +1,6 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 import { DeviceUpdated, responseUpdateDevice } from "../utils/types";
-import {Device, DevicePayload} from "../utils/device-types";
+import { Device, DevicePayload } from "../utils/device-types";
 
 const apiUrl = import.meta.env.VITE_API_URL;
 

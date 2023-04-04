@@ -1,10 +1,25 @@
 version: '3.9'
 
 services:
-  app:
+  frontend:
+    container_name: frontend
     build:
-      context: .
-      dockerfile: Dockerfile-dev
+      context: ./frontend
+      dockerfile: ../frontend/Dockerfile-dev
+    ports:
+      - "5173:5173"
+    environment:
+      - NODE_ENV=development
+      - VITE_API_URL=http://localhost:3000/api
+    volumes:
+        - ./frontend:/app
+        - /app/node_modules
+
+  backend:
+    container_name: backend
+    build:
+      context: ./backend
+      dockerfile: ../backend/Dockerfile-dev
     ports:
       - "3000:3000"
     environment:
@@ -14,7 +29,7 @@ services:
       - DATABASE_PASSWORD=password
       - DATABASE_NAME=database
     volumes:
-      - .:/app
+      - ./backend:/app
       - /app/node_modules
 
   db:

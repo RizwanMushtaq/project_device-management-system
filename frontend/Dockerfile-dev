@@ -1,0 +1,18 @@
+FROM node:14-alpine
+
+WORKDIR /app
+
+# Copy package.json and lock file first to leverage Docker cache
+COPY package.json package-lock.json ./
+
+# Install dependencies
+RUN npm install
+
+# Copy the rest of the application
+COPY . .
+
+# Expose the port for the development server
+EXPOSE 5173
+
+# Start the development server
+CMD ["npm","run", "dev"]
