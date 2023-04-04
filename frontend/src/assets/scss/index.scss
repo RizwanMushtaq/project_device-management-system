@@ -1,0 +1,17 @@
+body {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+
+  font-family: Consolas, Monaco, monospace;
+  text-align: center;
+}
+
+.page-container {
+  max-width: 768px;
+  margin: auto;
+
+  .page-row {
+    margin: 32px;
+  }
+}
