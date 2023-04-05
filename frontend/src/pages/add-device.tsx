@@ -4,7 +4,7 @@ import { useAddNewDeviceMutation } from "../store/apiSlice";
 import Layout from "../components/Layout";
 import DeviceForm from "../components/DeviceForm";
 import { responseAddNewDevice } from "../utils/types";
-import {DevicePayload, DeviceType} from "../utils/device-types";
+import { DevicePayload, DeviceType } from "../utils/device-types";
 
 export default function AddDevice(): JSX.Element {
   const [isDeviceAdded, setIsDeviceAdded] = React.useState<boolean>(false);
@@ -18,12 +18,8 @@ export default function AddDevice(): JSX.Element {
   };
 
   const handleFormData = async (payload: DevicePayload): Promise<boolean> => {
-    console.log("In handle form data");
-    console.log(payload);
-
     try {
       const result: responseAddNewDevice = await addNewDevice(payload);
-      console.log(result);
       if (result.data) {
         setIsDeviceAdded(true);
         return true;
