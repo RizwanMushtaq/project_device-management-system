@@ -24,7 +24,9 @@ export default function DeviceCard(
           <button
             className="btn btn-danger"
             id={deviceCardProps.device.id}
-            onClick={() => deviceCardProps.handleDeleteAction(event)}
+            onClick={() =>
+              deviceCardProps.handleDeleteAction(deviceCardProps.device.id)
+            }
           >
             delete device
           </button>

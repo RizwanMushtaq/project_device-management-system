@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import Layout from "../components/Layout";
 import React from "react";
 import DeviceCard from "../components/DeviceCard";
-import {Device, DeviceType} from "../utils/device-types";
+import { Device, DeviceType } from "../utils/device-types";
 
 export default function Devices(): JSX.Element {
   const deviceType = DeviceType;
@@ -15,14 +15,11 @@ export default function Devices(): JSX.Element {
   const { data, isLoading, isSuccess, isError, error } = useGetDevicesQuery();
   const [deleteDevice] = useDeleteDeviceMutation();
 
-  const deleteHandler = async (event: Event | undefined) => {
-    if (event) {
-      const id = (event.target as HTMLElement).id;
-      try {
-        await deleteDevice(id);
-      } catch (err) {
-        console.error("Failed to delete the post: ", err);
-      }
+  const deleteHandler = async (id: string) => {
+    try {
+      await deleteDevice(id);
+    } catch (err) {
+      console.error("Failed to delete the post: ", err);
     }
   };
 
